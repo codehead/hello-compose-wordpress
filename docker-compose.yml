@@ -10,8 +10,8 @@ services:
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: Aigh5Oir
+      WORDPRESS_DB_USER: ${USER_NAME:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${USER_PASSWORD?Has de definir una contrasenya de MariaDB}
 
   db:
     image: mariadb:10.6.3-focal
@@ -19,10 +19,10 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ebeeph2Y
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD?Has de definir una contrasenya de root para MariaDB}
       MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: Aigh5Oir
+      MYSQL_USER: ${USER_NAME:-wordpress}
+      MYSQL_PASSWORD: ${USER_PASSWORD}
 
   phpmyadmin:
     image: phpmyadmin:5.1.1-apache
