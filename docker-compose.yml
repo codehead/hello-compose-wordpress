@@ -24,6 +24,14 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: Aigh5Oir
 
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      PMA_HOST: db
+
 volumes:
   mariadb:
   wordpress:
